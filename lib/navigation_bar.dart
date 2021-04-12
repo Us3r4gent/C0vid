@@ -28,12 +28,13 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'C0vid - Covid19 Tracking',
+          'COVID19 Tracker',
           style: TextStyle(
-            fontSize: 25,
+            fontSize: 27,
             // color: Colors.black,
           ),
         ),
+        elevation: 0,
         centerTitle: true,
         // backgroundColor: Colors.white,
       ),
@@ -47,13 +48,14 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: BottomNavyBar(
         selectedIndex: _currentIndex,
+        showElevation: false,
         onItemSelected: (index) {
           setState(() => _currentIndex = index);
           _pageController.jumpToPage(index);
         },
         items: <BottomNavyBarItem>[
-          BottomNavyBarItem(icon: Icon(Icons.home), title: Text('home')),
-          BottomNavyBarItem(icon: Icon(Icons.people), title: Text('Profile'))
+          BottomNavyBarItem(icon: Icon(Icons.home), title: Text('Home')),
+          BottomNavyBarItem(icon: Icon(Icons.person), title: Text('Profile'))
         ],
         curve: Curves.easeInOutCirc,
         animationDuration: Duration(milliseconds: 250),
