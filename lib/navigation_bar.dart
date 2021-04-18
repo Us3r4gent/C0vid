@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'pages.dart';
+import 'package:http/http.dart';
+import 'dart:convert';
 
 class Home extends StatefulWidget {
   @override
@@ -57,6 +59,7 @@ class _HomeState extends State<Home> {
           BottomNavyBarItem(icon: Icon(Icons.home), title: Text('Home')),
           BottomNavyBarItem(icon: Icon(Icons.person), title: Text('Profile'))
         ],
+        backgroundColor: Colors.white,
         curve: Curves.easeInOutCirc,
         animationDuration: Duration(milliseconds: 250),
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
