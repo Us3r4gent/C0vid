@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'pages.dart';
-import 'package:http/http.dart';
-import 'dart:convert';
 
 class Home extends StatefulWidget {
   @override
@@ -29,12 +27,13 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'COVID19 Tracker',
-          style: TextStyle(
-            fontSize: 27,
-            // color: Colors.black,
-          ),
+        leading: IconButton(
+          icon: Icon(Icons.more_horiz),
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => AboutPage()));
+          },
+          iconSize: 45,
         ),
         elevation: 0,
         centerTitle: true,

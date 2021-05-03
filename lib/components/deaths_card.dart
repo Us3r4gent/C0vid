@@ -3,9 +3,9 @@ import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:c0vid/home_screen.dart';
 
-class ConfirmedCard extends StatefulWidget {
+class DeathsCard extends StatefulWidget {
   @override
-  _ConfirmedCardState createState() => _ConfirmedCardState();
+  _DeathsCardState createState() => _DeathsCardState();
 }
 
 Future<Map<String, dynamic>> fetchWorldData() async {
@@ -14,7 +14,7 @@ Future<Map<String, dynamic>> fetchWorldData() async {
   return json.decode(response.body);
 }
 
-class _ConfirmedCardState extends State<ConfirmedCard> {
+class _DeathsCardState extends State<DeathsCard> {
   Future covidFuture;
 
   @override
@@ -29,7 +29,7 @@ class _ConfirmedCardState extends State<ConfirmedCard> {
   }
 
   Widget coloredCard() => Card(
-        shadowColor: Colors.red,
+        shadowColor: Colors.blueGrey,
         elevation: 8,
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
@@ -39,7 +39,7 @@ class _ConfirmedCardState extends State<ConfirmedCard> {
           height: 150,
           decoration: BoxDecoration(
               gradient: LinearGradient(
-            colors: [Colors.red[500], Colors.red[500]],
+            colors: [Colors.blueGrey, Colors.blueGrey],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           )),
@@ -48,7 +48,7 @@ class _ConfirmedCardState extends State<ConfirmedCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Confirmed',
+                'Deaths',
                 style: TextStyle(
                   fontSize: 26,
                   color: Colors.white,
@@ -61,7 +61,7 @@ class _ConfirmedCardState extends State<ConfirmedCard> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return Text(
-                      snapshot.data['cases'].toString(),
+                      snapshot.data['deaths'].toString(),
                       style: TextStyle(
                           fontSize: 50,
                           color: Colors.white,

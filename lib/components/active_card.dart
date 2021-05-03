@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
+import 'package:c0vid/home_screen.dart';
 
 class ActiveCard extends StatefulWidget {
   @override
   _ActiveCardState createState() => _ActiveCardState();
 }
 
+Future<Map<String, dynamic>> fetchWorldData() async {
+  Response response = await get(Uri.parse(
+      'https://disease.sh/v3/covid-19/countries/${CurrentCountry.currentcountry}'));
+  return json.decode(response.body);
+}
+
 class _ActiveCardState extends State<ActiveCard> {
-  Future _covidFuture;
+  Future covidFuture;
 
   @override
   void initState() {
     super.initState();
-    _covidFuture = fetchWorldData();
+    covidFuture = fetchWorldData();
   }
 
   @override
   Widget build(BuildContext context) {
     return coloredCard();
-  }
-
-  Future<Map<String, dynamic>> fetchWorldData() async {
-    Response response =
-        await get(Uri.parse('https://disease.sh/v3/covid-19/all'));
-    return json.decode(response.body);
   }
 
   Widget coloredCard() => Card(
@@ -56,7 +57,7 @@ class _ActiveCardState extends State<ActiveCard> {
               ),
               const SizedBox(height: 4),
               FutureBuilder(
-                future: _covidFuture,
+                future: covidFuture,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return Text(
